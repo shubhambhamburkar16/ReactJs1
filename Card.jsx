@@ -28,7 +28,11 @@ class Cards extends Component{
 
         return(
             <>
-    <div className="cards">
+    <div class="row">
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+
     <h3> Cards</h3>
     {this.state.product.map((product) => (
     <Card style={{ width: '18rem' }}
@@ -48,7 +52,7 @@ class Cards extends Component{
       </Card.Body>
     </Card>
     ))}
-    </div>
+  </div>
 
             </>
         )
