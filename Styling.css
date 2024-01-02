@@ -1,0 +1,5 @@
+.StyleComp {
+    background-color: rgb(10, 9, 9);
+    font-size: calc(10px + 2vmin);
+    color: green;
+}
