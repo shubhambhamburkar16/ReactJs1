@@ -1,10 +1,20 @@
-const JavaScript = () => {
+const JavascriptComp = ()=>{
     return (
-      <>
-        <h2>Welcome to JavaScript Learning Session</h2>
-      </>
+        <>
+
+        <h1>JAVASCRIPT</h1>
+        <p>
+        JavaScript is the world's most popular programming language.
+
+JavaScript is the programming language of the Web.
+
+JavaScript is easy to learn.
+
+This tutorial will teach you JavaScript from basic to advanced.
+</p>
+
+        
+        </>
     )
-  }
-  
-  export default JavaScript;
-  
+}
+export default JavascriptComp;
