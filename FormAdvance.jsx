@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 
 const AdvanceForm = () => {
 
@@ -9,6 +9,10 @@ const AdvanceForm = () => {
         date:'',
         range:'50'
     })
+
+    // Creating a ref object
+    const nameRef = useRef()
+    const emailRef = useRef()
 
     const handleChange=(event)=>{
         console.log(event)
@@ -27,16 +31,23 @@ const AdvanceForm = () => {
         e.preventDefault()
       }
 
+      useEffect(()=>{
+        // Example of using ref to focus on an input field
+        nameRef.current.focus()
+        //emailRef.current.focus()
+      })
+
   return (
     <>
         <h4> Advance React Form Handling</h4>
 
         <form  onSubmit={handleSubmit}>
+              {/* Ref is assigned to the input element */}
             <label>
-           First Name : <input type='text'  name='fname' value={form.fname} onChange={handleChange} required/>
+           First Name : <input type='text'  name='fname' value={form.fname} onChange={handleChange} required ref={nameRef}/>
            </label> <br/><br/>
            <label>
-           Email : <input type='email'  name='email' value={form.email} onChange={handleChange} required/>
+           Email : <input type='email'  name='email' value={form.email} onChange={handleChange} required ref={emailRef}/>
            </label><br/><br/>
            <label>
             Colors : <input type='color' name='color' value={form.color} onChange={handleChange} required/>
@@ -68,3 +79,4 @@ const AdvanceForm = () => {
 }
 
 export default AdvanceForm
+

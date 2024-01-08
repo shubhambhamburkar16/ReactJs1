@@ -1,55 +1,46 @@
-import React, { useState } from 'react'
+import React, { useRef, useEffect } from 'react';
 
 const FormBasic = () => {
+  const firstNameRef = useRef(null);
+  const lastNameRef = useRef(null);
+  const emailRef = useRef(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`First Name: ${firstNameRef.current.value} Last Name: ${lastNameRef.current.value} Email: ${emailRef.current.value}`);
+  };
 
 
-   const[firstName, setFirstName] = useState('')
-   const[lastName, setLastName] = useState('')
-   const[email, setEmail] = useState('') 
-
-  const handleSubmit=(e)=>{
-    alert(`First Name : ${firstName} Last Name : ${lastName} Email : ${email}`)
-    console.log("Inside handleSubmit")
-    e.preventDefault()
-  }
-
-  const handleFirstNameChange=(e)=>{
-    console.log(e.target.value)
-    setFirstName(e.target.value)
-  }
-
-  const handleLastNameChange=(e)=>{
-    setLastName(e.target.value)
-  }
-
-  const handleEmail=(e)=>{
-    setEmail(e.target.value)
-  }
+  useEffect(()=>{
+    // Example of using ref to focus on an input field
+    firstNameRef.current.focus()
+    //emailRef.current.focus()
+  })
   return (
     <>
-      
-      <h2> Form Handling Basic</h2>
+      <h2>Form Handling Basic</h2>
 
       <form onSubmit={handleSubmit}>
-            <div>
-            First Name: <input type="text" name="" id=""  value={firstName} onChange={handleFirstNameChange}/>
-            </div>
-            <br/>
+        <div>
+          First Name: <input type="text" ref={firstNameRef} />
+        </div>
+        <br />
 
-            <div>
-            Last Name: <input type="text" name="" id=""  value={lastName} onChange={handleLastNameChange}/>
-            </div>
-            <br/>
+        <div>
+          Last Name: <input type="text" ref={lastNameRef} />
+        </div>
+        <br />
 
-            <div>
-            Email: <input type="email" name="" id=""  value={email} onChange={handleEmail}/>
-            </div>
-            <br/>
+        <div>
+          Email: <input type="email" ref={emailRef} />
+        </div>
+        <br />
 
-            <button type='submit'>Submit</button>
+        <button type='submit'>Submit</button>
       </form>
     </>
-  )
-}
+  );
+};
 
-export default FormBasic
+export default FormBasic;
+
