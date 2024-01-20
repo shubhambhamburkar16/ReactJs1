@@ -25,7 +25,7 @@ const AddEmployee = () => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
-     // event.stopPropagation();
+      event.stopPropagation();
     }
 
     const employee = {id:Date.now() ,empId, name, position, compony}
@@ -45,7 +45,8 @@ const AddEmployee = () => {
             type="number"
             placeholder="Employee ID"
             value={empId}
-            onChange={(e)=>setEmpID(e.target.value)} />
+            onChange={(e)=>setEmpID(e.target.value)}
+          />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col} md="4" controlId="validationCustom02">
@@ -93,4 +94,5 @@ const AddEmployee = () => {
 }
 
 export default AddEmployee;
+
 

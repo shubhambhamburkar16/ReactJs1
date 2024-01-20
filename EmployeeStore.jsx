@@ -1,4 +1,3 @@
-
 import { createContext, useState } from "react";
 
 
@@ -9,12 +8,21 @@ export const EmployeeProvider = ({children}) =>{
         const[employees, setEmployee] = useState([])
 
         const addEmployee=(employee)=>{
-                setEmployee(...employees, employee)
+                setEmployee([...employees, employee])
         }
 
-        return(
+        const updateEmployee = (id, updatedEmployee) =>{
+            setEmployee(
+                employees.map((employee)=> employee.id===id ? updatedEmployee : employee)
+            )
+        }
 
-            <EmployeeContext.Provider value={{employees, addEmployee}}>
+        const deleteEmployee = (id) =>{
+            setEmployee( employees.filter((employee)=> employee.id !== id))
+        }
+        return(
+          
+            <EmployeeContext.Provider value={{employees, addEmployee, updateEmployee, deleteEmployee}}>
                 {children}
             </EmployeeContext.Provider>
 
