@@ -10,6 +10,11 @@ import { useNavigate } from 'react-router-dom';
 //import Employee Context
 import { StudentContext } from './StudentStore';
 
+
+import { addStudent } from '../CRUD_ContextApi/StudentSlice';
+import { useDispatch } from 'react-redux';
+
+
 const AddStudent = () => {
   const [validated, setValidated] = useState(false);
   const[studentid, setStudentID] = useState('')
@@ -19,7 +24,9 @@ const AddStudent = () => {
 
   const navigate = useNavigate()
   
-  const{students, addStudent} = useContext(StudentContext)
+  // const{students, addStudent} = useContext(StudentContext)
+
+  const dispatch = useDispatch()
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -30,7 +37,8 @@ const AddStudent = () => {
 
     const student = {id:Date.now() ,studentid, name, position, compony}
     console.log(student)
-    addStudent(student)
+    dispatch(addStudent(student))
+    // addStudent(student)
     navigate('/')
     setValidated(true);
   };

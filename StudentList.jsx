@@ -4,16 +4,27 @@ import './exampleStyle.css'
 import Table from 'react-bootstrap/Table'
 
 import { useNavigate } from 'react-router-dom'
-import { StudentContext } from './StudentStore'
+// import { StudentContext } from './StudentStore'
 
+import { useSelector } from 'react-redux'
+
+import { deleteStudent } from '../CRUD_ContextApi/StudentSlice';
+import { useDispatch } from 'react-redux'
 const StudentList = () => {
     
     const navigate = useNavigate()
-    const{students, deleteStudent} = useContext(StudentContext)
+    // const{students, deleteStudent} = useContext(StudentContext)
+
+
+    const dispatch = useDispatch()
+
+    const students = useSelector(state => state.student.students)
 
     const handleDelete =(stdid)=>{
-      deleteStudent(stdid)
+      //deleteEmployee(id)
+      dispatch(deleteStudent(stdid))
     }
+  
   return (
     <div>
             <h5> Student List</h5>

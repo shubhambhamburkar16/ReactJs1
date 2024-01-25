@@ -8,7 +8,11 @@ import { useContext } from 'react';
 // import { EmployeeContext } from './EmployeeStore';
 import { StudentContext } from './StudentStore';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
+import { useDispatch } from 'react-redux';
+
+import { updateStudent } from '../CRUD_ContextApi/StudentSlice';
 const EditStudent = () => {
 
   const [validated, setValidated] = useState(false);
@@ -19,7 +23,9 @@ const EditStudent = () => {
 
   const navigate = useNavigate()
   
-  const{students, updateStudent} = useContext(StudentContext)
+  // const{students, updateStudent} = useContext(StudentContext)
+  const students = useSelector(state => state.student.students)
+  const dispatch = useDispatch()
 
   const {stdid} = useParams()
   console.log(stdid)
