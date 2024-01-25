@@ -5,8 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 
 //import Employee Context
-import { EmployeeContext } from './EmployeeStore';
+//import { EmployeeContext } from './EmployeeStore';
 import { useParams } from 'react-router-dom';
+
+import { useSelector } from 'react-redux';
+
+import { useDispatch } from 'react-redux';
+import { updateEmployee } from './EmployeeSlice';
 
 const EditEmployee = () => {
 
@@ -18,7 +23,9 @@ const EditEmployee = () => {
 
   const navigate = useNavigate()
   
-  const{employees, updateEmployee} = useContext(EmployeeContext)
+  //const{employees, updateEmployee} = useContext(EmployeeContext)
+  const employees = useSelector(state => state.employee.employees)
+  const dispatch = useDispatch()
 
   const {id} = useParams()
   console.log(id)
@@ -42,7 +49,9 @@ const EditEmployee = () => {
 
     const updatedEmployee = {id:parseInt(id) ,empId, name, position, compony}
     console.log(updatedEmployee)
-    updateEmployee(parseInt(id), updatedEmployee)
+   // updateEmployee(parseInt(id), updatedEmployee)
+    dispatch(updateEmployee({id:parseInt(id), updatedEmployee}))
+
     navigate('/')
     setValidated(true);
   };
@@ -78,7 +87,7 @@ const EditEmployee = () => {
           <Form.Label>Psition</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Employee Position"
+              placeholder="Employee Psition"
               aria-describedby="inputGroupPrepend"
               required
               value={position}

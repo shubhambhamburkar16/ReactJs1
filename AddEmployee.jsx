@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+// import React, { useContext } from 'react'
 
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
@@ -8,7 +8,11 @@ import Row from 'react-bootstrap/Row';
 import { useNavigate } from 'react-router-dom';
 
 //import Employee Context
-import { EmployeeContext } from './EmployeeStore';
+//import { EmployeeContext } from './EmployeeStore';
+
+//Import  addEmployee function from Employee Slice
+import { addEmployee } from './EmployeeSlice';
+import { useDispatch } from 'react-redux';
 
 const AddEmployee = () => {
   const [validated, setValidated] = useState(false);
@@ -19,7 +23,9 @@ const AddEmployee = () => {
 
   const navigate = useNavigate()
   
-  const{employees, addEmployee} = useContext(EmployeeContext)
+  //const{employees, addEmployee} = useContext(EmployeeContext)
+
+  const dispatch = useDispatch()
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -30,7 +36,10 @@ const AddEmployee = () => {
 
     const employee = {id:Date.now() ,empId, name, position, compony}
     console.log(employee)
-    addEmployee(employee)
+    //addEmployee(employee)
+    
+    dispatch(addEmployee(employee))
+
     navigate('/')
     setValidated(true);
   };
@@ -61,10 +70,10 @@ const AddEmployee = () => {
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col} md="3" controlId="validationCustomUsername">
-          <Form.Label>Position</Form.Label>
+          <Form.Label>Psition</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Employee Position"
+              placeholder="Employee Psition"
               aria-describedby="inputGroupPrepend"
               required
               value={position}
@@ -77,8 +86,8 @@ const AddEmployee = () => {
       </Row>
       <Row className="mb-3" style={{marginLeft:'60px'}}>
         <Form.Group as={Col} md="4" controlId="validationCustom03">
-          <Form.Label>Company</Form.Label>
-          <Form.Control type="text" placeholder="Company" required 
+          <Form.Label>Compony</Form.Label>
+          <Form.Control type="text" placeholder="City" required 
             value={compony}
             onChange={(e)=>setCompony(e.target.value)}
           />
@@ -94,5 +103,3 @@ const AddEmployee = () => {
 }
 
 export default AddEmployee;
-
-
