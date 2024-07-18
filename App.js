@@ -19,7 +19,7 @@ function App() {
       {/*<FunctionalComp/>*/}
       {/* <JsxComp/> */}
         {/* <FragmtComp/> */}
-         {/* <Website/> */}
+         <Website/>
         {/* <Sidebar/> */}
 {/* 
         <CompLifeCycle/>
@@ -27,7 +27,7 @@ function App() {
         {/* <ApiIntegration/> */}
         {/* <Cards/> */}
         {/* <UseEffect/> */}
-        <ApiCallUsinguseEffect/>
+        {/* <ApiCallUsinguseEffect/> */}
 
   </div>
   );
